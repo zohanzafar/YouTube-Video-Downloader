@@ -1,8 +1,22 @@
-from django.contrib import admin 
-from django.urls import path 
-from . import views 
+# These are 2 files combined here 
+# First one is of app (url.py)
+# Second one is of project (url.py)
 
-urlpatterns = [ 
-	path('admin/', admin.site.urls), 
-	path('youtube', views.youtube, name='youtube'), 
+# First One
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('hello/', views.say_hello),
+    path('youtubevideodownloader/', views.youtube),
+]
+
+
+# Second One
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('first/', include('first.urls')),
 ]
